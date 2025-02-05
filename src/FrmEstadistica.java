@@ -1,6 +1,7 @@
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
@@ -33,6 +34,9 @@ public class FrmEstadistica extends JFrame {
         btnQuitar.setBounds(80,70,100,25);
         getContentPane().add(btnQuitar);
 
+        JList lstMuestra=new JList<>();
+        lstMuestra.setBounds(210,40,100,150);
+        getContentPane().add(lstMuestra);
     }
     
 }
