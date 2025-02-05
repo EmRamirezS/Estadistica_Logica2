@@ -1,11 +1,11 @@
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JTextField;
-import javax.swing.WindowConstants;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 
 public class FrmEstadistica extends JFrame {
+
+    JTextField txtDato;
+    JList lstMuestra;
 
     public FrmEstadistica() {
 
@@ -18,7 +18,7 @@ public class FrmEstadistica extends JFrame {
         lblDato.setBounds(10,10,100,25);
         getContentPane().add(lblDato);
 
-        JTextField txtDato=new JTextField();
+        txtDato=new JTextField();
         txtDato.setBounds(80,10,100,25);
         getContentPane().add(txtDato);
 
@@ -34,9 +34,42 @@ public class FrmEstadistica extends JFrame {
         btnQuitar.setBounds(80,70,100,25);
         getContentPane().add(btnQuitar);
 
-        JList lstMuestra=new JList<>();
+        lstMuestra=new JList<>();
         lstMuestra.setBounds(210,40,100,150);
         getContentPane().add(lstMuestra);
+    
+        btnAgregar.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                agregarDato();
+            }
+        });
+
+        btnQuitar.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                quitarDato();
+            }
+        });
+    }
+
+    private double[] muestra=new double[1000]; 
+    private int totalDatos = -1;
+    
+    private void agregarDato() {
+        double dato=Double.parseDouble(txtDato.getText());
+        totalDatos++;
+        muestra[totalDatos] = dato;
+        mostrarMuestra();
+    }
+
+    private void mostrarMuestra() {
+        String[] strMuestra = new String[totalDatos + 1];
+        for(int i=0; i <= totalDatos; i++) {
+                strMuestra[1] = String.valueOf(muestra[1]);
+        }
+        lstMuestra.setListData(strMuestra);
     }
     
+    private void quitarDato() {
+        JOptionPane.showMessageDialog(null, "Hizo click en QUITAR");
+    }
 }
